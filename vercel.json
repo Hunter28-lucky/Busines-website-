@@ -1,7 +1,3 @@
 {
-  "buildCommand": "cd 'website for Portfolio' && npm run build",
-  "devCommand": "cd 'website for Portfolio' && npm run dev",
-  "installCommand": "cd 'website for Portfolio' && npm install",
-  "framework": "nextjs",
-  "outputDirectory": "website for Portfolio/.next"
+  "framework": "nextjs"
 }
