@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-bg: #0A0A0A;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --primary-glow: conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   CUSTOM ANIMATIONS & KEYFRAMES
+   ============================================ */
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes flow {
+  0% { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes flow-reverse {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-flow {
+  animation: flow 1s linear infinite;
+}
+
+.animate-flow-fast {
+  animation: flow 0.5s linear infinite;
+}
+
+.animate-flow-reverse {
+  animation: flow-reverse 1s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-gradient {
+  background: linear-gradient(to right, #fff, #a5a5a5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+}
+
+.card-gradient {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.0) 100%);
+  border: 1px solid var(--card-border);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.hero-glow {
+  background: radial-gradient(circle at center, rgba(120, 119, 198, 0.15) 0%, transparent 50%);
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+
+/* Base scroll reveal styles */
+.scroll-reveal {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-reveal-active {
+  opacity: 1;
+}
+
+/* Direction-based animations */
+.scroll-reveal-up {
+  transform: translateY(60px);
+}
+
+.scroll-reveal-up.scroll-reveal-active {
+  transform: translateY(0);
+}
+
+.scroll-reveal-down {
+  transform: translateY(-60px);
+}
+
+.scroll-reveal-down.scroll-reveal-active {
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  transform: translateX(-60px);
+}
+
+.scroll-reveal-left.scroll-reveal-active {
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  transform: translateX(60px);
+}
+
+.scroll-reveal-right.scroll-reveal-active {
+  transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+  transform: scale(0.9);
+}
+
+.scroll-reveal-scale.scroll-reveal-active {
+  transform: scale(1);
+}
+
+.scroll-reveal-fade {
+  opacity: 0;
+}
+
+.scroll-reveal-fade.scroll-reveal-active {
+  opacity: 1;
+}
+
+/* Stagger effect for child elements */
+.scroll-reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-stagger.scroll-reveal-active > *:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-active > *:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-active > *:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-active > *:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-active > *:nth-child(5) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-active > *:nth-child(6) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+/* Parallax scroll effect */
+@keyframes parallax-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.parallax-slow {
+  animation: parallax-float 20s ease-in-out infinite;
+}
+
+.parallax-medium {
+  animation: parallax-float 15s ease-in-out infinite;
+}
+
+.parallax-fast {
+  animation: parallax-float 10s ease-in-out infinite;
+}
+
+/* Scroll indicator */
+@keyframes scroll-indicator {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+.scroll-indicator {
+  animation: scroll-indicator 2s ease-in-out infinite;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+html.hide-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
+}
+
+html.hide-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.hide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.hide-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.5);
+  border-radius: 4px;
+}
+
+html.hide-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7);
+}
