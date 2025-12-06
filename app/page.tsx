@@ -3,7 +3,7 @@ import FeaturesSlider from '@/components/FeaturesSlider';
 
 export default function Home() {
   return (
-    <main className="page bg-[#05060F]">
+    <main className="page bg-black">
       {/* Hero Section with 3-card login system */}
       <Hero />
 

@@ -9,12 +9,12 @@ import ScrollProgress from "@/components/ScrollProgress";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Goswami - The world's best login box",
-  description: "The world's best login box. Powered by WorkOS + Radix.",
-  keywords: "authentication, login, sso, mfa, user management, workos, radix",
+  title: "AuthKit - The world's best login box",
+  description: "The world's best login box, powered by WorkOS + Radix.",
+  keywords: "authentication, login, sso, mfa, user management, workos, radix, authkit",
   openGraph: {
-    title: "Goswami - The world's best login box",
-    description: "The world's best login box. Powered by WorkOS + Radix.",
+    title: "AuthKit - The world's best login box",
+    description: "The world's best login box, powered by WorkOS + Radix.",
     type: "website",
   },
 };
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#05060F] text-white antialiased`}>
+      <body className={`${inter.className} bg-black text-white antialiased`}>
         <SmoothScroll />
         <Navbar />
         <main className="min-h-screen">{children}</main>
